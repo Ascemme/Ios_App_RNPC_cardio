@@ -1,0 +1,119 @@
+#: include kv/firstscreen.kv
+#: include kv/secondscreen.kv
+#: include kv/thirdscreen.kv
+#: include kv/pulse.kv
+#: include kv/breese.kv
+#: include kv/resalt.kv
+#: include kv/bargraph.kv
+
+#:import utils kivy.utils
+
+GridLayout:
+	cols: 1
+
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("#031521")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		size_hint: .1, .1
+		GridLayout:
+			rows: 1
+			spacing: 1
+			pos_hint: {"top": .9 , "left": 1}
+
+
+	ScreenManager:
+		id: screen_manager
+		FirstScrren:
+			name: "screen1"
+			id: screen1
+		Pulse:
+			name: "pulse"
+			id: pulse
+		Breese:
+			name: "breese"
+			id: breese
+		Resalt:
+			name: "resalt"
+			id: resalt
+		SecondScreen:
+			name: "screen2"
+			id: screen2
+	
+		ThirdScreen:
+			name: "screen3"
+			id: screen3
+		BarGraph:
+			name: "bargraph"
+			id: bargraph
+	
+
+
+
+
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("F3CACA")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+
+		size_hint: 1, .1
+		GridLayout:
+			rows: 1
+			spacing: 1
+			pos_hint: {"bottom": .1 , "left": 1}
+
+
+
+
+			Button:
+				id: first_button
+				text: "Сердце"
+				background_normal: ""
+				background_color: (0,1,0,1)
+
+				
+				
+				on_release:
+					background_color: (0,1,1,1)
+					app.change_screen("screen1")
+					app.animation_button(self)
+					app.animation_button_back(second_button)
+					app.animation_button_back(third_button)	
+					app.first_screen1()		
+
+
+
+			Button:
+				id: second_button
+				background_normal: ""
+				background_color: (1,0,0,1)
+				text: "Вода"
+				color: (1,1,1,1)
+				on_release:					
+					app.change_screen("screen2")
+					app.animation_button(self)
+					app.animation_button_back(first_button)
+					app.animation_button_back(third_button)
+					app.bar_state_secondscreen()
+
+			Button:
+				id: third_button
+				background_normal: ""
+				background_color: (1,0,0,1)
+				text: "анкета"
+				color: (1,1,1,1)
+				on_release:		
+
+				on_release:
+					app.change_screen("screen3")
+					app.animation_button(self)
+					app.animation_button_back(first_button)
+					app.animation_button_back(second_button)
+					app.self_data_read()
+					app.update_case()
