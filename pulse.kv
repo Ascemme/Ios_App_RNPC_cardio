@@ -1,0 +1,99 @@
+#:import utils kivy.utils
+#: include kv/bargraph.kv
+
+<Pulse>:
+	id: pulse
+
+
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("F3CACA")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		FloatLayout:
+			TextInput:
+				id: pulse_up
+				hint_text: "pulse_up"
+				size_hint: 0.3, 0.06
+				pos_hint: {"top": .5 , "center_x": 0.2}
+				input_filter: lambda number, from_undo: number[:3 - len(self.text)]
+			TextInput:
+				id: pulse_down
+				hint_text: "pulse_down"
+				size_hint: 0.3, 0.06
+				pos_hint: {"top": .5 , "center_x": 0.5}
+				input_filter: lambda number, from_undo: number[:3 - len(self.text)]
+			TextInput:
+				id: pulse_self
+				hint_text: "pulse_self"
+				size_hint: 0.3, 0.06
+				pos_hint: {"top": .5 , "center_x": 0.8}
+				input_filter: lambda number, from_undo: number[:3 - len(self.text)]
+			TextInput:
+				id: mass
+				hint_text: "mass"
+				size_hint: 0.3, 0.06
+				pos_hint: {"top": .4 , "center_x": 0.8}
+				input_filter: lambda number, from_undo: number[:3 - len(self.text)]
+			GridLayout:
+				rows: 1
+				spacing: 10
+				pos_hint: {"bottom": .1 , "left": 1}
+
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("F3CACA")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+
+		size_hint: 1, .1
+		GridLayout:
+			rows: 1
+			spacing: 10
+			Button:
+				id: add_pulse
+				background_color: (1,0,0,1)
+				text: "Пропустить"
+				color: (1,1,1,1)
+				
+				on_release:
+					background_color: (0,1,1,1)
+					app.change_screen("pulse")
+					
+
+			Button:
+				id: skip_pulse
+				background_color: (1,0,0,1)
+				text: "Добавить"
+				color: (1,1,1,1)
+				
+				on_release:
+					background_color: (0,1,1,1)
+					app.change_screen("breese")
+					app.starter2()
+					
+					app.data_base(1, pulse_up.text)
+					app.data_base(2, pulse_down.text)
+					app.data_base(3, pulse_self.text)
+					app.data_base(4, mass.text)
+					app.base_data()
+					app.bar_state_pulse(1, 5)
+
+
+	FloatLayout:
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "ГРАФИК"
+			pos_hint: {"top": 1 , "center_x": .5}
+	ScreenManager:
+		id: screen_manager
+		BarGraph:
+			name: "bargraph"
+			id: bargraph
+			size_hint: .8, 0.4
+			pos_hint: {"top": .95 , "center_x": .5}

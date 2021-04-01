@@ -1,0 +1,86 @@
+#:import utils kivy.utils
+
+<SecondScreen>
+
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("F3CACA")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+		TextInput:
+			id: mass1
+			hint_text: "mass"
+			input_type: "number"
+			input_filter: lambda number, from_undo: number[:3 - len(self.text)]
+			size_hint: 0.3, 0.06
+			pos_hint: {"top": .45 , "center_x": 0.5}
+
+
+		Button:
+			id: first_button1
+			text: "сохранить"
+			background_normal: ""
+			background_color: (0,1,0,1)
+			size_hint: 0.3, 0.06
+			pos_hint: {"top": .40 , "center_x": 0.5}
+			on_release:
+				background_color: (0,1,1,1)
+				app.animation_button(self)
+				app.starter2()
+				app.animation_button_back(radiouttton2)
+				app.data_base(8, mass1.text)
+				app.base_data()
+
+		GridLayout:
+			canvas:
+				Color: 
+					rgb: utils.get_color_from_hex("A3CACA")
+				Rectangle:
+					size: self.size
+					pos: self.pos
+			rows: 1
+			spacing: 10
+			pos_hint: {"top": .50 , "center_x": 0.5}
+			size_hint: 0.5, 0.05
+			Button:
+				id: radiouttton1
+				text: "Сердце1"
+				background_normal: ""
+				background_color: (0,1,0,1)
+
+
+				
+				
+				on_release:
+					background_color: (0,1,1,1)
+					app.animation_button(self)
+					app.animation_button_back(radiouttton2)
+			Button:
+
+				id: radiouttton2
+				text: "Сердце2"
+				background_normal: ""
+				background_color: (0,1,0,1)
+
+				
+				
+				on_release:
+					background_color: (0,1,1,1)
+					app.animation_button(self)
+					app.animation_button_back(radiouttton1)
+	FloatLayout:
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "ГРАФИК"
+			pos_hint: {"top": 1 , "center_x": .5}
+	ScreenManager:
+		id: screen_manager
+		BarGraph:
+			name: "bargraph"
+			id: bargraph
+			size_hint: .8, 0.4
+			pos_hint: {"top": .95 , "center_x": .5}

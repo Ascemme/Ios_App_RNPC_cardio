@@ -1,0 +1,156 @@
+<ThirdScreen>:
+	cols: 1
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("#01011a")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+
+		
+
+		FloatLayout:
+
+			TextInput:
+				id: first_name
+				hint_text: "first_name"
+				size_hint: .7, 0.06
+				pos_hint: {"top": .95 , "center_x": 0.5}
+			TextInput:
+				id: birthday
+				hint_text: "birthday"
+				size_hint: 0.7, 0.06
+				pos_hint: {"top": .85 , "center_x": 0.5}
+			TextInput:
+				id: sex
+				hint_text: "sex"
+				size_hint: 0.7, 0.06
+				pos_hint: {"top": .75, "center_x": 0.5}
+			TextInput:
+				id: growth
+				hint_text: "growth"
+				size_hint: 0.7, 0.06
+				pos_hint: {"top": .65 , "center_x": 0.5}
+			TextInput:
+				id: number_self
+				hint_text: "number_self"
+				size_hint: 0.7, 0.06
+				pos_hint: {"top": .55 , "center_x": 0.5}
+			TextInput:
+				id: number_doc
+				hint_text: "number_doc"
+				size_hint: 0.7, 0.06
+				pos_hint: {"top": .45 , "center_x": 0.5}
+			TextInput:
+				id: number_doc2
+				hint_text: "number_doc2"
+				size_hint: 0.7, 0.06
+				pos_hint: {"top": .35 , "center_x": 0.5}
+			TextInput:
+				id: mail_to
+				hint_text: "mail_to"
+				size_hint: 0.7, 0.06
+				pos_hint: {"top": .25 , "center_x": 0.5}
+	
+			
+	FloatLayout:
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "ФАМИЛИЯ"
+			pos_hint: {"top": 1 , "center_x": .5}
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "ДАТА РОЖДЕНИЯ"
+			pos_hint: {"top": .9 , "center_x": .5}	
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "ПОЛ"
+			pos_hint: {"top": .8 , "center_x": .5}	
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "РОСТ"
+			pos_hint: {"top": .7 , "center_x": .5}	
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "НОМЕР ТЕЛЕФОНА"
+			pos_hint: {"top": .6 , "center_x": .5}
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "КАРДИОЛОГ"
+			pos_hint: {"top": .5 , "center_x": .5}
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "НЕРАПЕФТ"
+			pos_hint: {"top": .4 , "center_x": .5}
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "ОТПРАВИТЬ МАЙЛ"
+			pos_hint: {"top": .3 , "center_x": .5}
+		Label:
+			id: label_mail
+			text: ""
+			size_hint: .7, 0.06
+			pos_hint: {"top": .2 , "center_x": .5}	
+
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("F3CACA")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+
+		size_hint: 1, .1
+		GridLayout:
+			rows: 1
+			spacing: 10
+			Button:
+				id: add_pulse
+				background_color: (1,0,0,1)
+				text: "Сохранить"
+				color: (1,1,1,1)
+				
+				on_release:
+					background_color: (0,1,1,1)
+					background_color: (0,1,1,1)
+					app.starter()
+					app.self_data_seve(1, first_name.text)
+					app.self_data_seve(2, birthday.text)
+					app.self_data_seve(3, sex.text)
+					app.self_data_seve(4, growth.text)
+					app.self_data_seve(5, number_self.text)
+					app.self_data_seve(6, number_doc.text)
+					app.self_data_seve(7, number_doc2.text)
+					app.self_data_seve(8, mail_to.text)
+					label_mail.text = "СОХРАНЕНО"
+
+			Button:
+				id: skip_pulse
+				background_color: (1,0,0,1)
+				text: "Отправить"
+				color: (1,1,1,1)
+				
+				on_release:
+					background_color: (0,1,1,1)
+
+					app.starter()
+					app.self_data_seve(1, first_name.text)
+					app.self_data_seve(2, birthday.text)
+					app.self_data_seve(3, sex.text)
+					app.self_data_seve(4, growth.text)
+					app.self_data_seve(5, number_self.text)
+					app.self_data_seve(6, number_doc.text)
+					app.self_data_seve(7, number_doc2.text)
+					app.self_data_seve(8, mail_to.text)
+					app.self_data_read()
+					app.mail_senter()
+

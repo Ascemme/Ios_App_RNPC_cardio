@@ -1,0 +1,175 @@
+#:import utils kivy.utils
+
+
+
+
+<Breese>:
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("F3CACA")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+	GridLayout:
+		size_hint: .8, .2
+		rows:1
+		pos_hint: {"top": .6 , "center_x": .50}
+		Label:	
+			text: 'Отдышка'
+	GridLayout:
+		size_hint: .8, .2
+		rows:1
+		pos_hint: {"top": .5 , "center_x": .50}
+		Label:	
+			text: 'Отдышка'	
+	GridLayout:
+		size_hint: .8, .2
+		rows:1
+		pos_hint: {"top": .4 , "center_x": .50}
+		Label:	
+			text: 'Отдышка'		
+
+	GridLayout:
+		size_hint: .8, .1
+		rows: 1
+		spacing: 1
+		pos_hint: {"top": .5 , "center_x": .50}
+		Label:
+			text: 'мин'
+		CheckBox:
+			group: "breese1"
+			color: (0,0,1,1)
+			on_release:
+				
+				app.data_base("5", "1")
+		CheckBox:
+			group: "breese1"
+			color: (0,0,1,1)
+			on_release:
+				app.data_base("5", "2")
+				
+		CheckBox:
+			group: "breese1"
+			color: (0,0,1,1)
+			on_release:
+				app.data_base("5", "3")
+				
+		CheckBox:
+			group: "breese1"
+			color: (0,0,1,1)
+			on_release:
+				app.data_base("5", "4")
+				
+		Label:
+			text: 'макс'
+	GridLayout:
+		size_hint: .8, .1
+		rows: 1
+		spacing: 1
+		pos_hint: {"top": .4 , "center_x": .50}
+		Label:
+			text: 'мин'
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese2"
+			on_release:
+				app.data_base("6", "1")
+				
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese2"
+			on_release:
+				app.data_base("6", "2")
+				
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese2"
+			on_release:
+				app.data_base("6", "3")
+				
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese2"
+			on_release:
+				app.data_base("6", "4")
+				
+		Label:
+			text: 'макс'
+	GridLayout:
+		size_hint: .8, .1
+		rows: 1
+		spacing: 1
+		pos_hint: {"top": .3 , "center_x": .50}
+		Label:
+			text: 'мин'
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese3"
+			on_release:
+				app.data_base("7", "1")
+				
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese3"
+			on_release:
+				app.data_base("7", "2")
+				
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese3"
+			on_release:
+				app.data_base("7", "3")
+				
+		CheckBox:
+			color: (0,0,1,1)
+			group: "breese3"
+			on_release:
+				app.data_base("7", "4")
+				
+		Label:
+			text: 'макс'
+	GridLayout:
+
+		spacing: 10
+		size_hint: 1, .1
+		rows: 1
+		spacing: 10
+		pos_hint: {"bottom": .1 , "left": 1}
+
+		Button:
+			id: add_pulse
+			background_color: (1,0,0,1)
+			text: "пропустить"
+			color: (1,1,1,1)
+			
+			on_release:
+				background_color: (0,1,1,1)
+				app.change_screen("resalt")
+
+				
+		Button:
+			id: skip_pulse
+			background_color: (1,0,0,1)
+			text: "добавить"
+			color: (1,1,1,1)
+			
+			on_release:
+				background_color: (0,1,1,1)
+				app.change_screen("resalt")
+				app.starter2()
+				app.base_data()
+				
+	FloatLayout:
+		Label:
+			id: first_text
+			size_hint: .7, 0.06
+			text: "ГРАФИК"
+			pos_hint: {"top": 1 , "center_x": .5}
+	ScreenManager:
+		id: screen_manager
+		BarGraph:
+			name: "bargraph"
+			id: bargraph
+			size_hint: .8, 0.4
+			pos_hint: {"top": .95 , "center_x": .5}

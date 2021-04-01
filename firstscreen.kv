@@ -1,0 +1,34 @@
+
+
+<FirstScrren>:
+
+	FloatLayout:
+		canvas:
+			Color: 
+				rgb: utils.get_color_from_hex("F3CACA")
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		
+
+
+	Button:
+		id: text_button1
+		size_hint: 0.9, 0.4
+		pos_hint: {"top": .95 , "center_x": 0.5}
+		text: "ssss"
+		on_release:
+			app.change_screen("pulse")
+			app.bar_state_pulse(7,4)
+		
+
+	Button:
+		size_hint: 0.9, 0.2
+		pos_hint: {"top": .5 , "center_x": 0.5}
+
+		text:
+			"sf"
+		on_release:
+			
+			app.change_screen("resalt")
+	
